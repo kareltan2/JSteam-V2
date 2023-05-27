@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_edit_review_popup"
+                android:layout_gravity="center"
+                android:text="Edit your review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/pt_edit_review_pop_up"
+                android:layout_width="303dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:hint="Edit review . . ."
+                android:inputType="text"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/button_edit_review_popup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="edit" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

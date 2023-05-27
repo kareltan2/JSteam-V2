@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.core.GamesDetailActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_game_on_game_detail_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="0.25"
+        android:src="@drawable/among_us_profile_game" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/dark_green"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_title_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
+        android:text="[GAME TITLE]"
+        android:textColor="@color/dark_green"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_description_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:text="[DESCRIPTION VALUE]"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:background="@color/dark_green"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_title_genre_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="GENRE"
+        android:textColor="@color/light_green"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/activity_horizontal_margin" />
+
+    <TextView
+        android:id="@+id/tv_genre_name_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:text="[GENRE VALUE]"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tv_title_rating_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="RATING"
+        android:textColor="@color/light_green"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:id="@+id/tv_rating_value_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="[RATING VALUE]"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingBottom="@dimen/activity_horizontal_margin" />
+
+    <TextView
+        android:id="@+id/tv_title_price_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="PRICE"
+        android:textColor="@color/light_green"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/activity_horizontal_margin" />
+
+    <TextView
+        android:id="@+id/tv_price_value_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="[PRICE VALUE]"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingBottom="@dimen/activity_horizontal_margin" />
+
+    <TextView
+        android:id="@+id/tv_title_review_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="What Do You Think About this Game?"
+        android:textColor="@color/dark_green"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/activity_horizontal_margin" />
+
+    <TextView
+        android:id="@+id/tv_review_description_game_on_game_detail_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Give your review here!"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:paddingBottom="@dimen/activity_horizontal_margin" />
+
+    <EditText
+        android:id="@+id/pt_input_review_game_detail"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0.25dp"
+        android:ems="10"
+        android:hint="Review. . . "
+        android:inputType="text"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/button_add_review_game_detail"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:text="REVIEW" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_margin="3dp" />
+
+</LinearLayout>

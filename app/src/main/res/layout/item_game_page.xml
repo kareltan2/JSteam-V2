@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_game_page_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_game_on_game_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1.5"
+            android:src="@drawable/among_us_profile_game" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="7dp">
+
+            <TextView
+                android:id="@+id/tv_title_game_on_game_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[TITLE]"
+                android:textColor="@color/dark_green"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_genre_game_on_game_page"
+                android:layout_width="217dp"
+                android:layout_height="wrap_content"
+                android:text="[GENRE]" />
+
+            <TextView
+                android:id="@+id/tv_price_game_on_game_page"
+                android:layout_width="217dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="[PRICE]"
+                android:textColor="@color/light_green"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

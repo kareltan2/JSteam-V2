@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.prelogin.RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="2dp" />
+
+    <TextView
+        android:id="@+id/tv_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JSteam"
+        android:textColor="@color/dark_green"
+        android:textSize="48sp"
+        android:layout_gravity="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_slogan_register"
+        android:layout_width="203dp"
+        android:layout_height="34dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="Your Paradise Game Place"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/soft_black"
+        android:textColorHighlight="#F8F2F4"
+        android:textColorHint="#4CAF50"
+        android:textDirection="firstStrongLtr"
+        android:textIsSelectable="false"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_username_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Username"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/pt_username_register"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="Username . . ."
+        android:inputType="text"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_email_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Email"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/pt_email_register"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="Email . . ."
+        android:inputType="text"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_region_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Region"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/pt_region_register"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="Region . . ."
+        android:inputType="text"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_phone_number_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Phone Number"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/pt_phone_number_register"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="Phone Number . . ."
+        android:inputType="text"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_password_title_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Password"
+        android:textColor="@color/dark_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/pt_input_password_register"
+        android:layout_width="303dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:hint="Password. . . "
+        android:inputType="textPassword"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/button_register_register_page"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="REGISTER" />
+
+    <TextView
+        android:id="@+id/tv_already_has_account"
+        android:layout_width="212dp"
+        android:layout_height="23dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="Already has an account?"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/dark_green"
+        android:textColorHighlight="#F8F2F4"
+        android:textColorHint="#4CAF50"
+        android:textDirection="firstStrongLtr"
+        android:textIsSelectable="false"
+        android:textSize="15sp"
+        android:textStyle="bold|italic" />
+
+</LinearLayout>

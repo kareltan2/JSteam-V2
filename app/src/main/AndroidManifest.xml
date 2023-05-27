@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.JSteam"
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.core.GamesDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.core.AboutUsActivity"
+            android:exported="false"
+            android:label="Jsteam's Headquarter in Jakarta"/>
+        <activity
+            android:name=".activity.popup.PopUpConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.core.ProfilePageActivity"
+            android:exported="false"
+            android:label="@string/title_profile_section" />
+        <activity
+            android:name=".activity.core.ReviewSectionActivity"
+            android:exported="false"
+            android:label="@string/title_review_section" />
+        <activity
+            android:name=".activity.core.HomePageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_page" />
+        <activity
+            android:name=".activity.prelogin.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.prelogin.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.initialize.InitializeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

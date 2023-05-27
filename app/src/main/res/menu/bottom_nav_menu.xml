@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_game_page"
+        android:icon="@drawable/game_symbol"
+        android:title="Game Page" />
+
+    <item
+        android:id="@+id/navigation_review_section"
+        android:icon="@drawable/review_symbol"
+        android:title="Review Section" />
+
+    <item
+        android:id="@+id/navigation_profile_section"
+        android:icon="@drawable/profile_nav"
+        android:title="Profile Section" />
+
+</menu>
