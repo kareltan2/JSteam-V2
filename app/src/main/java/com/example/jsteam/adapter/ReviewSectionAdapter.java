@@ -14,13 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jsteam.R;
 import com.example.jsteam.activity.core.GamesDetailActivity;
 import com.example.jsteam.activity.popup.PopUpConfirmationActivity;
 import com.example.jsteam.activity.popup.PopUpEditReviewActivity;
-import com.example.jsteam.R;
-import com.example.jsteam.model.DatabaseConfiguration;
-import com.example.jsteam.model.Game;
-import com.example.jsteam.model.Review;
+import com.example.jsteam.helper.GameHelper;
+import com.example.jsteam.helper.UserHelper;
+import com.example.jsteam.model.dao.Game;
+import com.example.jsteam.model.dao.Review;
 
 import java.util.Vector;
 
@@ -28,7 +29,9 @@ import java.util.Vector;
  * @author kareltan
  */
 public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdapter.ViewHolder> {
+
     private Context context;
+
     private Vector<Review> reviews;
 
     public ReviewSectionAdapter(Context context, Vector<Review> reviews) {
@@ -45,28 +48,37 @@ public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        UserHelper userHelper = new UserHelper(context.getApplicationContext());
+        GameHelper gameHelper = new GameHelper(context.getApplicationContext());
+        userHelper.open();
+        gameHelper.open();
         Review review = reviews.get(position);
 
-        holder.tvGameName.setText(review.getGameName());
-        holder.tvUsername.setText(review.getUsername());
-        holder.tvReview.setText(review.getContent());
+        String gameName = gameHelper.findGame(review.getGameId()).getName();
+        String username = userHelper.findUserByUserId(review.getUserId()).getUsername();
+        userHelper.close();
+        gameHelper.close();
+
+        holder.tvGameName.setText(gameName);
+        holder.tvUsername.setText(username);
+        holder.tvReview.setText(review.getComment());
 
         holder.buttonDeleteReview.setOnClickListener(view -> {
-            String reviewContent = holder.tvReview.getText().toString();
             PopUpConfirmationActivity popUpConfirmation = new PopUpConfirmationActivity();
-            popUpConfirmation.popUpConfirmation(view, context, reviewContent, review.getUsername(), review.getGameName());
+            popUpConfirmation.popUpConfirmation(view, context, review, username);
         });
 
         holder.buttonUpdateReview.setOnClickListener(view -> {
             PopUpEditReviewActivity popUpClass = new PopUpEditReviewActivity();
-            popUpClass.popUpEditReview(view, context, review.getUsername(), review.getGameName(), review.getContent());
+            popUpClass.popUpEditReview(view, context, review, username);
         });
 
         holder.cvReviewSectionList.setOnClickListener(view -> {
             Intent intent = new Intent(context, GamesDetailActivity.class);
 
-            int index = DatabaseConfiguration.findIndexGameByName(review.getGameName());
-            Game game = DatabaseConfiguration.games.get(index);
+            gameHelper.open();
+            Game game = gameHelper.findGame(review.getGameId());
+            gameHelper.close();
 
             intent.putExtra("gameName", game.getName());
             intent.putExtra("gameGenre", game.getGenre());

@@ -1,7 +1,9 @@
-package com.example.jsteam.model;
+package com.example.jsteam.model.rest;
 
 /**
  * @author kareltan
+ * @description:
+ * used for mapping json data from rest
  */
 public class Game {
 
@@ -11,15 +13,18 @@ public class Game {
 
     private Double rating;
 
-    private Integer price;
+    private String price;
+
+    private String image;
 
     private String description;
 
-    public Game(String name, String genre, Double rating, Integer price, String description) {
+    public Game(String name, String genre, Double rating, String price, String image, String description) {
         this.name = name;
         this.genre = genre;
         this.rating = rating;
         this.price = price;
+        this.image = image;
         this.description = description;
     }
 
@@ -47,12 +52,20 @@ public class Game {
         this.rating = rating;
     }
 
-    public Integer getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getDescription() {

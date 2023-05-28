@@ -1,8 +1,11 @@
-package com.example.jsteam.model;
+package com.example.jsteam.deprecated.model;
 
 /**
  * @author kareltan
+ * @description:
+ * deprecated due to migrate to real database connection. this is only support for JSteam-V1
  */
+@Deprecated
 public class Review {
 
     private String gameName;

@@ -1,7 +1,5 @@
 package com.example.jsteam.activity.prelogin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,16 +7,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.jsteam.activity.core.HomePageActivity;
-import com.example.jsteam.R;
-import com.example.jsteam.model.DatabaseConfiguration;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import com.example.jsteam.R;
+import com.example.jsteam.activity.core.HomePageActivity;
+import com.example.jsteam.helper.UserHelper;
+import com.example.jsteam.model.dao.User;
+
+import java.util.Objects;
 
 /**
  * @author kareltan
  */
 public class MainActivity extends AppCompatActivity {
+
+    private final UserHelper userHelper = new UserHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        AtomicInteger index = new AtomicInteger();
+        userHelper.open();
         Button loginButton = findViewById(R.id.button_login_login_page);
         TextView notHaveAccountText = findViewById(R.id.tv_didnt_have_account);
         EditText usernameLoginPage = findViewById(R.id.pt_username_login);
@@ -39,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
             String password = String.valueOf(passwordLoginPage.getText());
 
             if(validationNotEmpty(username, password)){
-                index.set(DatabaseConfiguration.findIndexUser(username));
-                validationAccount(index, password);
+                validationAccount(username, password);
             }
 
         });
@@ -60,22 +62,25 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean validationAccount(AtomicInteger index, String password) {
-        if(index.get() != -1){
-            if(!DatabaseConfiguration.users.get(index.get()).getPassword().equals(password)){
+    private boolean validationAccount(String username, String password) {
+        if(Objects.nonNull(userHelper.findUser(username))){
+            User user = userHelper.findUser(username);
+
+            if(!user.getPassword().equals(password)){
                 Toast.makeText(MainActivity.this, "Wrong Password!", Toast.LENGTH_SHORT).show();
                 return false;
             }
             else {
                 Toast.makeText(MainActivity.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
                 Intent intentHome = new Intent(MainActivity.this, HomePageActivity.class);
-                intentHome.putExtra("username", DatabaseConfiguration.users.get(index.intValue()).getUsername());
+                intentHome.putExtra("username", user.getUsername());
                 startActivity(intentHome);
                 return true;
             }
         }
 
         Toast.makeText(MainActivity.this, "Unregistered User! Please register first!", Toast.LENGTH_SHORT).show();
+        userHelper.close();
         return false;
     }
 

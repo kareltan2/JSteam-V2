@@ -1,53 +1,102 @@
 package com.example.jsteam.activity.initialize;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
-import com.example.jsteam.activity.prelogin.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.jsteam.R;
-import com.example.jsteam.model.DatabaseConfiguration;
+import com.example.jsteam.activity.prelogin.MainActivity;
+import com.example.jsteam.helper.GameHelper;
+import com.example.jsteam.helper.ReviewHelper;
+import com.example.jsteam.model.dao.Game;
+import com.example.jsteam.model.dao.Review;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Random;
 
 /**
  * @author kareltan
  */
 public class InitializeActivity extends AppCompatActivity {
 
+    private final GameHelper gameHelper = new GameHelper(this);
+
+    private final ReviewHelper reviewHelper = new ReviewHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initialize);
-        testingConfiguration();
+
+        gameHelper.open();
+        reviewHelper.open();
+        if (gameHelper.findAllGame().isEmpty() && reviewHelper.findAllReview().isEmpty()){
+            fetchAndStoreData();
+        }
+        reviewHelper.close();
+        gameHelper.close();
+
         Intent intent = new Intent(InitializeActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
-    private void testingConfiguration() {
-        //testing purpose
-        //user
-        DatabaseConfiguration.DatabaseUser(0, "kareltan1", "pintar1", "karel.tan1@gmail.com", "INDO", "082325124125");
-        DatabaseConfiguration.DatabaseUser(1, "kareltan2", "pintar2", "karel.tan2@gmail.com", "INDO", "082325124123");
-        DatabaseConfiguration.DatabaseUser(2, "kareltan3", "pintar3", "karel.tan3@gmail.com", "INDO", "082325124122");
+    public void fetchAndStoreData() {
+        String[] reviews = {
+                "Great product!",
+                "Terrible experience.",
+                "Highly recommended!",
+                "Not worth the price.",
+                "Average quality.",
+                "Exceptional service!",
+                "Disappointing performance.",
+                "Best purchase ever!",
+                "Could be better.",
+                "Outstanding value."
+        };
+        Random random = new Random();
 
-        //game
-        DatabaseConfiguration.DatabaseGame("Mobile Legend", "War Games Explorer", 4.9, 90000, "A war games with free superior hero skin");
-        DatabaseConfiguration.DatabaseGame("League of Legend", "War Games Explorer", 4.9, 90000, "A war games with free superior hero skin");
-        DatabaseConfiguration.DatabaseGame("Clash of Clans", "War Games Explorer", 4.9, 90000, "A war games with free superior hero skin");
-        DatabaseConfiguration.DatabaseGame("Among Us", "Tactical Games", 4.9, 1000000, "A tactical games and multiplayer game");
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String url = "https://mocki.io/v1/6b7306e9-5c3b-4341-8efa-601bbb9b3a94";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, response -> {
+            try {
+                JSONArray gamesArray = response.getJSONArray("games");
 
-        //review
-        DatabaseConfiguration.DatabaseReview("Mobile Legend", "a very good game with extraordinary experience and UI", "kareltan1");
-        DatabaseConfiguration.DatabaseReview("Clash of Clans", "mantull", "kareltan1");
-        DatabaseConfiguration.DatabaseReview("Among Us", "game keren", "kareltan1");
+                for (int i = 1; i <= gamesArray.length(); i++) {
+                    JSONObject jsonObject = gamesArray.getJSONObject(i-1);
+                    String name = jsonObject.getString("name");
+                    String genre = jsonObject.getString("genre");
+                    Double rating = jsonObject.getDouble("rating");
+                    String price = jsonObject.getString("price");
+                    String image = jsonObject.getString("image");
+                    String description = jsonObject.getString("description");
 
-        DatabaseConfiguration.DatabaseReview("Mobile Legend", "GG", "kareltan2");
-        DatabaseConfiguration.DatabaseReview("Clash of Clans", "mantullita", "kareltan2");
-        DatabaseConfiguration.DatabaseReview("Among Us", "kelasss brader", "kareltan2");
+                    gameHelper.open();
+                    gameHelper.insertGame(new Game(null, name, genre, rating, price, image, description));
+                    gameHelper.close();
 
-        DatabaseConfiguration.DatabaseReview("Mobile Legend", "BEK BEK BEK", "kareltan3");
-        DatabaseConfiguration.DatabaseReview("Clash of Clans", "TIUNG", "kareltan3");
-        DatabaseConfiguration.DatabaseReview("Among Us", "kelasss brader", "kareltan3");
+                    for (int j = 1; j <= 3; j++) {
+                        int randomIndex = random.nextInt(reviews.length);
+                        String randomReview = reviews[randomIndex];
 
+                        reviewHelper.open();
+                        reviewHelper.insertReview(new Review(null, j, i, randomReview));
+                        reviewHelper.close();
+                    }
+                }
+
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }, error -> Toast.makeText(this, "Error Occurred When Retrieving JSON", Toast.LENGTH_SHORT).show());
+
+        requestQueue.add(jsonObjectRequest);
     }
 }

@@ -13,13 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsteam.adapter.ReviewSectionAdapter;
 import com.example.jsteam.databinding.FragmentReviewSectionBinding;
-import com.example.jsteam.model.DatabaseConfiguration;
+import com.example.jsteam.helper.ReviewHelper;
+import com.example.jsteam.helper.UserHelper;
 
 import java.util.Objects;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
 public class ReviewSectionFragment extends Fragment {
+
+    private ReviewHelper reviewHelper;
+
+    private UserHelper userHelper;
 
     private FragmentReviewSectionBinding binding;
 
@@ -29,7 +34,8 @@ public class ReviewSectionFragment extends Fragment {
 
         binding = FragmentReviewSectionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        reviewHelper = new ReviewHelper(getActivity());
+        userHelper = new UserHelper(getActivity());
         init();
         return root;
     }
@@ -43,16 +49,20 @@ public class ReviewSectionFragment extends Fragment {
     private void init(){
         final RecyclerView recyclerViewReviewSectionList = binding.rvReviewSectionList;
 
+        userHelper.open();
+        reviewHelper.open();
         recyclerViewReviewSectionList.setAdapter(new ReviewSectionAdapter(binding.getRoot().getContext(),
-                DatabaseConfiguration.reviews.stream()
+                reviewHelper.findAllReview().stream()
                         .filter(review ->
-                                review.getUsername().equals(
-                                        Objects.requireNonNull(
-                                                getActivity()).getIntent().getStringExtra("username")
+                                review.getUserId().equals(
+                                        userHelper.findUser(Objects.requireNonNull(
+                                                getActivity()).getIntent().getStringExtra("username")).getId()
                                 )
                         )
                         .collect(Collectors.toCollection(Vector::new))
         ));
+        userHelper.close();
+        reviewHelper.close();
         recyclerViewReviewSectionList.setLayoutManager(new LinearLayoutManager(binding.getRoot().getContext()));
         Objects.requireNonNull(getActivity()).getIntent().putExtra("username", getActivity().getIntent().getStringExtra("username"));
     }

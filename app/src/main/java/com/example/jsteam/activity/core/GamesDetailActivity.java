@@ -1,7 +1,5 @@
 package com.example.jsteam.activity.core;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,13 +9,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.jsteam.R;
-import com.example.jsteam.model.DatabaseConfiguration;
+import com.example.jsteam.helper.GameHelper;
+import com.example.jsteam.helper.ReviewHelper;
+import com.example.jsteam.helper.UserHelper;
+import com.example.jsteam.model.dao.Game;
+import com.example.jsteam.model.dao.Review;
+import com.example.jsteam.model.dao.User;
 
 /**
  * @author kareltan
  */
 public class GamesDetailActivity extends AppCompatActivity {
+
+    private final ReviewHelper reviewHelper = new ReviewHelper(this);
+
+    private final UserHelper userHelper = new UserHelper(this);
+
+    private final GameHelper gameHelper = new GameHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,21 +62,25 @@ public class GamesDetailActivity extends AppCompatActivity {
         EditText review = findViewById(R.id.pt_input_review_game_detail);
         Button reviewGameButton = findViewById(R.id.button_add_review_game_detail);
 
-        String gameNameText = getIntent().getStringExtra("gameName");
-        String gameGenreText = getIntent().getStringExtra("gameGenre");
-        String gameRatingText = getIntent().getStringExtra("gameRating");
-        String gamePriceText = getIntent().getStringExtra("gamePrice");
-        String gameDescriptionText = getIntent().getStringExtra("gameDescription");
+        userHelper.open();
+        User user = userHelper.findUser(getIntent().getStringExtra("username"));
+        userHelper.close();
 
-        gameName.setText(gameNameText);
-        gameGenre.setText(gameGenreText);
-        gameRating.setText(gameRatingText);
-        gamePrice.setText(String.format("Rp.%s", gamePriceText));
-        gameDescription.setText(gameDescriptionText);
+        gameHelper.open();
+        Game game = gameHelper.findGame(getIntent().getIntExtra("gameId", 1));
+        gameHelper.close();
+
+        gameName.setText(game.getName());
+        gameGenre.setText(game.getGenre());
+        gameRating.setText(String.valueOf(game.getRating()));
+        gamePrice.setText(game.getPrice());
+        gameDescription.setText(game.getDescription());
 
         reviewGameButton.setOnClickListener(view -> {
             if(!String.valueOf(review.getText()).isEmpty()){
-                DatabaseConfiguration.DatabaseReview(gameNameText, String.valueOf(review.getText()), getIntent().getStringExtra("username"));
+                reviewHelper.open();
+                reviewHelper.insertReview(new Review(null, user.getId(), game.getId(), review.getText().toString()));
+                reviewHelper.close();
                 Toast.makeText(GamesDetailActivity.this, "Review Submitted!", Toast.LENGTH_SHORT).show();
                 Intent intentHome = new Intent(GamesDetailActivity.this, HomePageActivity.class);
                 intentHome.putExtra("username", getIntent().getStringExtra("username"));

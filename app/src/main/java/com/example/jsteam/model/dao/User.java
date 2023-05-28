@@ -1,11 +1,13 @@
-package com.example.jsteam.model;
+package com.example.jsteam.model.dao;
 
 /**
  * @author kareltan
+ * @description:
+ * used for mapping DAO (database) data
  */
 public class User {
 
-    private Integer userId;
+    private Integer id;
 
     private String username;
 
@@ -17,8 +19,8 @@ public class User {
 
     private String phoneNumber;
 
-    public User(Integer userId, String username, String password, String email, String region, String phoneNumber) {
-        this.userId = userId;
+    public User(Integer id, String username, String password, String email, String region, String phoneNumber) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -26,12 +28,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {

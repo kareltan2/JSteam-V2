@@ -13,16 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jsteam.adapter.GamePageAdapter;
 import com.example.jsteam.databinding.FragmentGamePageBinding;
-import com.example.jsteam.model.DatabaseConfiguration;
-import com.example.jsteam.model.Game;
+import com.example.jsteam.helper.GameHelper;
 
 import java.util.Objects;
-import java.util.Vector;
 
 public class GamePageFragment extends Fragment {
 
+    private GameHelper gameHelper;
+
     private FragmentGamePageBinding binding;
-    private Vector<Game> gamesListVector = new Vector<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,7 +30,7 @@ public class GamePageFragment extends Fragment {
 
         binding = FragmentGamePageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        gameHelper = new GameHelper(getActivity());
         init();
         return root;
     }
@@ -45,7 +44,9 @@ public class GamePageFragment extends Fragment {
     private void init(){
         final RecyclerView recyclerViewGamesPageList = binding.rvGamePageList;
 
-        recyclerViewGamesPageList.setAdapter(new GamePageAdapter(binding.getRoot().getContext(), DatabaseConfiguration.games));
+        gameHelper.open();
+        recyclerViewGamesPageList.setAdapter(new GamePageAdapter(binding.getRoot().getContext(), gameHelper.findAllGame()));
+        gameHelper.close();
         recyclerViewGamesPageList.setLayoutManager(new LinearLayoutManager(binding.getRoot().getContext()));
         Objects.requireNonNull(getActivity()).getIntent().putExtra("username", getActivity().getIntent().getStringExtra("username"));
     }

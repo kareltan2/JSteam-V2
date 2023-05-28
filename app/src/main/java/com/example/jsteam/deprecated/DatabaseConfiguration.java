@@ -1,10 +1,17 @@
-package com.example.jsteam.model;
+package com.example.jsteam.deprecated;
+
+import com.example.jsteam.deprecated.model.Game;
+import com.example.jsteam.deprecated.model.Review;
+import com.example.jsteam.deprecated.model.User;
 
 import java.util.Vector;
 
 /**
  * @author kareltan
+ * @description:
+ * deprecated due to migrate to real database connection. this is only support for JSteam-V1
  */
+@Deprecated
 public class DatabaseConfiguration {
 
     public static final Vector<User> users = new Vector<User>();

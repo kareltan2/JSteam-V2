@@ -13,12 +13,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.jsteam.activity.popup.PopUpConfirmationActivity;
 import com.example.jsteam.databinding.FragmentProfileSectionBinding;
-import com.example.jsteam.model.DatabaseConfiguration;
-import com.example.jsteam.model.User;
+import com.example.jsteam.helper.UserHelper;
+import com.example.jsteam.model.dao.User;
 
 import java.util.Objects;
 
 public class ProfileSectionFragment extends Fragment {
+
+    private UserHelper userHelper;
 
     private FragmentProfileSectionBinding binding;
 
@@ -28,7 +30,7 @@ public class ProfileSectionFragment extends Fragment {
 
         binding = FragmentProfileSectionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        userHelper = new UserHelper(getActivity());
         init();
         return root;
     }
@@ -46,7 +48,9 @@ public class ProfileSectionFragment extends Fragment {
         TextView phoneProfilePage = binding.tvPhoneOutputProfile;
         Button logoutButton = binding.buttonLogoutProfilePage;
 
-        User userLoggedIn = DatabaseConfiguration.users.get(DatabaseConfiguration.findIndexUser(requireActivity().getIntent().getStringExtra("username")));
+        userHelper.open();
+        User userLoggedIn = userHelper.findUser(requireActivity().getIntent().getStringExtra("username"));
+        userHelper.close();
 
         String usernameText = userLoggedIn.getUsername();
         String emailText = userLoggedIn.getEmail();
