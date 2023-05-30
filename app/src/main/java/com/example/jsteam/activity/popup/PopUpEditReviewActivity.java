@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jsteam.R;
+import com.example.jsteam.model.dao.Review;
 
 public class PopUpEditReviewActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class PopUpEditReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_review_popup);
     }
 
-    public void popUpEditReview(final View view, Context context, String username, String gameName, String oldContent) {
+    public void popUpEditReview(final View view, Context context, Review review, String username) {
         LayoutInflater inflater = (LayoutInflater) view.getContext()
                 .getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
         View popupShow = inflater.inflate(R.layout.activity_edit_review_popup, null);
@@ -43,7 +44,7 @@ public class PopUpEditReviewActivity extends AppCompatActivity {
             if(!String.valueOf(newContent.getText()).isEmpty()){
                 popupWindow.dismiss();
                 PopUpConfirmationActivity popUpConfirmation = new PopUpConfirmationActivity();
-                popUpConfirmation.popUpConfirmation(view, context, username, gameName, oldContent, String.valueOf(newContent.getText()));
+                popUpConfirmation.popUpConfirmation(view, context, review, String.valueOf(newContent.getText()), username);
             } else {
                 Toast.makeText(view.getContext(), "The content must not be empty!", Toast.LENGTH_SHORT).show();
             }

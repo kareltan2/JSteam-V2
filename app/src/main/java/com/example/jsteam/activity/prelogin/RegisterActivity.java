@@ -10,9 +10,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jsteam.R;
-import com.example.jsteam.model.DatabaseConfiguration;
+import com.example.jsteam.helper.UserHelper;
+import com.example.jsteam.model.dao.User;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private final UserHelper userHelper = new UserHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
                             if(validateAlphanumeric(password)){
                                 if(validateEmail(email)){
                                     if(validatePhoneNumber(phoneNumber)){
-                                        DatabaseConfiguration.DatabaseUser(DatabaseConfiguration.users.size() + 1, username, password, email, region, phoneNumber);
+                                        userHelper.open();
+                                        userHelper.insertUser(new User(null, username, password, email, region, phoneNumber));
+                                        userHelper.close();
 
                                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                         startActivity(intent);
@@ -74,10 +79,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean validateUniqueUsername(String username) {
-        if(!DatabaseConfiguration.findIndexUser(username).equals(-1)){
+        userHelper.open();
+        if(userHelper.isExistUsername(username)){
             Toast.makeText(RegisterActivity.this, "This Username has already registered!", Toast.LENGTH_SHORT).show();
             return false;
         }
+        userHelper.close();
         return true;
     }
 

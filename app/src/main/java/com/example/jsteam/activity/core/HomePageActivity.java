@@ -6,11 +6,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.jsteam.R;
-import com.example.jsteam.databinding.ActivityHomePageBinding;
-import com.example.jsteam.model.Game;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -18,6 +13,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.jsteam.R;
+import com.example.jsteam.databinding.ActivityHomePageBinding;
+import com.example.jsteam.model.dao.Game;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Vector;
 
