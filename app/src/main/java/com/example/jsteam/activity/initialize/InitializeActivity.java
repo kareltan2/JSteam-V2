@@ -26,9 +26,9 @@ public class InitializeActivity extends AppCompatActivity {
     private void testingConfiguration() {
         //testing purpose
         //user
-        DatabaseConfiguration.DatabaseUser(0, "kareltan1", "pintar1", "karel.tan1@gmail.com", "INDO", "082325124125");
-        DatabaseConfiguration.DatabaseUser(1, "kareltan2", "pintar2", "karel.tan2@gmail.com", "INDO", "082325124123");
-        DatabaseConfiguration.DatabaseUser(2, "kareltan3", "pintar3", "karel.tan3@gmail.com", "INDO", "082325124122");
+        DatabaseConfiguration.DatabaseUser(0, "kareltan", "pintar1", "karel.tan1@gmail.com", "INDO", "082325124125");
+        DatabaseConfiguration.DatabaseUser(1, "jason", "pintar2", "jason@gmail.com", "INDO", "082325124123");
+        DatabaseConfiguration.DatabaseUser(2, "niclauss", "pintar3", "niclauss@gmail.com", "INDO", "082325124122");
 
         //game
         DatabaseConfiguration.DatabaseGame("Mobile Legend", "War Games Explorer", 4.9, 90000, "A war games with free superior hero skin");

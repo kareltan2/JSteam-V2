@@ -1,16 +1,30 @@
 package com.example.jsteam.activity.prelogin;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//import com.example.jsteam.Manifest;
+import android.Manifest;
+import com.example.jsteam.activity.core.OTPVerification;
+import com.example.jsteam.model.DatabaseConfiguration;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.jsteam.R;
-import com.example.jsteam.model.DatabaseConfiguration;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -20,7 +34,62 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         init();
+
+        Button registerButton = findViewById(R.id.button_register_register_page);
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ContextCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
+                    SmsManager smsManager = SmsManager.getDefault();
+                    EditText phoneRegisterPage = findViewById(R.id.pt_phone_number_register);
+                    EditText emailRegisterPage = findViewById(R.id.pt_email_register);
+                    Random random = new Random();
+                    int randomNumber = random.nextInt(10);
+                    int randomNumber2 = random.nextInt(10);
+                    int randomNumber3 = random.nextInt(10);
+                    int randomNumber4 = random.nextInt(10);
+                    String otp = Integer.toString(randomNumber) + Integer.toString(randomNumber2)+Integer.toString(randomNumber3
+                    )+Integer.toString(randomNumber4);
+                    ArrayList<String> parts = smsManager.divideMessage(otp + " is the otp");
+                    String phone = phoneRegisterPage.getText().toString();
+                    smsManager.sendMultipartTextMessage(phone, null, parts, null, null);
+
+                    Intent intent = new Intent(RegisterActivity.this, OTPVerification.class);
+                    intent.putExtra("mobile", phoneRegisterPage.getText().toString());
+                    intent.putExtra("email", emailRegisterPage.getText().toString());
+                    intent.putExtra("otp", otp);
+                    startActivity(intent);
+                }else{
+                    ActivityCompat.requestPermissions(RegisterActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
+                }
+            }
+        });
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                EditText phoneRegisterPage = findViewById(R.id.pt_phone_number_register);
+                SmsManager smsManager = SmsManager.getDefault();
+                Random random = new Random();
+                int randomNumber = random.nextInt(10);
+                int randomNumber2 = random.nextInt(10);
+                int randomNumber3 = random.nextInt(10);
+                int randomNumber4 = random.nextInt(10);
+                String otp = Integer.toString(randomNumber) + Integer.toString(randomNumber2)+Integer.toString(randomNumber3
+                )+Integer.toString(randomNumber4);
+                ArrayList<String> parts = smsManager.divideMessage(otp + " is the otp");
+                String phoneNumber = phoneRegisterPage.getText().toString();
+                smsManager.sendMultipartTextMessage(phoneNumber, null, parts, null, null);
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
     private void init() {
         Button registerButton = findViewById(R.id.button_register_register_page);
@@ -47,8 +116,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     if(validatePhoneNumber(phoneNumber)){
                                         DatabaseConfiguration.DatabaseUser(DatabaseConfiguration.users.size() + 1, username, password, email, region, phoneNumber);
 
-                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                        startActivity(intent);
+//                                        Toast.makeText(RegisterActivity.this, "Ke OTP", Toast.LENGTH_SHORT).show();
+
                                     }
                                 }
                             }
