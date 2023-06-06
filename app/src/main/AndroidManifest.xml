@@ -19,17 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JSteam"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".activity.core.MapsActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.core.MapsActivity"
+            android:exported="false" />
 
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="AIzaSyAlT5X01ROZxibxmcjRiVKS7jrAmfGQzxY" />-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAlT5X01ROZxibxmcjRiVKS7jrAmfGQzxY" />
 
         <activity
             android:name=".activity.core.OTPVerification"
             android:exported="false" />
+
         <activity
             android:name=".activity.core.GamesDetailActivity"
             android:exported="false" />

@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import com.example.jsteam.R;
 import com.example.jsteam.activity.core.HomePageActivity;
+import com.example.jsteam.activity.core.MapsActivity;
 import com.example.jsteam.activity.core.OTPVerification;
 import com.example.jsteam.deprecated.DatabaseConfiguration;
 import com.example.jsteam.helper.UserHelper;
@@ -147,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
                     EditText usernameLoginPage = findViewById(R.id.pt_username_login);
                     User user2 = userHelper.findUser(String.valueOf(usernameLoginPage.getText().toString()));
                     SmsManager smsManager = SmsManager.getDefault();
-                    Toast.makeText(MainActivity.this, user.getUsername(), Toast.LENGTH_SHORT).show();
                     Random random = new Random();
                     int randomNumber = random.nextInt(10);
                     int randomNumber2 = random.nextInt(10);
