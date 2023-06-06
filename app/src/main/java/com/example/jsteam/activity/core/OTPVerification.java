@@ -1,7 +1,5 @@
 package com.example.jsteam.activity.core;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,9 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.jsteam.R;
-import com.example.jsteam.activity.prelogin.MainActivity;
-import com.example.jsteam.activity.prelogin.RegisterActivity;
 
 public class OTPVerification extends AppCompatActivity {
 
@@ -80,6 +78,7 @@ public class OTPVerification extends AppCompatActivity {
 
                 if(generateOtp.equals(getIntent().getStringExtra("otp"))){
                     Intent intent = new Intent(OTPVerification.this, HomePageActivity.class);
+                    intent.putExtra("username", getIntent().getStringExtra("username"));
                     startActivity(intent);
                 }
                 else{
