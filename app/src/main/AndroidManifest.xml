@@ -16,6 +16,9 @@
         android:theme="@style/Theme.JSteam"
         tools:targetApi="31">
         <activity
+            android:name=".activity.core.OTPVerification"
+            android:exported="false" />
+        <activity
             android:name=".activity.core.GamesDetailActivity"
             android:exported="false" />
         <activity
