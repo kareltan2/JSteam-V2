@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_weight="0.25"
-        android:src="@drawable/among_us_profile_game" />
+        android:src="@drawable/ic_launcher_background" />
 
     <View
         android:layout_width="match_parent"

@@ -22,6 +22,7 @@ import com.example.jsteam.helper.GameHelper;
 import com.example.jsteam.helper.UserHelper;
 import com.example.jsteam.model.dao.Game;
 import com.example.jsteam.model.dao.Review;
+import com.example.jsteam.support.ImageLoaderTask;
 
 import java.util.Vector;
 
@@ -54,14 +55,17 @@ public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdap
         gameHelper.open();
         Review review = reviews.get(position);
 
-        String gameName = gameHelper.findGame(review.getGameId()).getName();
+        Game game = gameHelper.findGame(review.getGameId());
         String username = userHelper.findUserByUserId(review.getUserId()).getUsername();
         userHelper.close();
         gameHelper.close();
 
-        holder.tvGameName.setText(gameName);
+        holder.tvGameName.setText(game.getName());
         holder.tvUsername.setText(username);
         holder.tvReview.setText(review.getComment());
+
+        new ImageLoaderTask(holder.ivGameImage).execute(game.getImage());
+
 
         holder.buttonDeleteReview.setOnClickListener(view -> {
             PopUpConfirmationActivity popUpConfirmation = new PopUpConfirmationActivity();
@@ -77,12 +81,11 @@ public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdap
             Intent intent = new Intent(context, GamesDetailActivity.class);
 
             gameHelper.open();
-            Game game = gameHelper.findGame(review.getGameId());
             gameHelper.close();
 
             intent.putExtra("gameName", game.getName());
             intent.putExtra("gameGenre", game.getGenre());
-            intent.putExtra("gamePrice", game.getPrice().toString());
+            intent.putExtra("gamePrice", game.getPrice());
             intent.putExtra("gameRating", game.getRating().toString());
             intent.putExtra("gameDescription", game.getDescription());
             intent.putExtra("username", ((Activity) context).getIntent().getStringExtra("username"));

@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +31,7 @@
             android:value="AIzaSyAlT5X01ROZxibxmcjRiVKS7jrAmfGQzxY" />
 
         <activity
-            android:name=".activity.core.OTPVerification"
+            android:name=".activity.prelogin.OTPVerification"
             android:label="JStream OTP Confirmation"
             android:parentActivityName=".activity.prelogin.MainActivity"
             android:exported="false" />

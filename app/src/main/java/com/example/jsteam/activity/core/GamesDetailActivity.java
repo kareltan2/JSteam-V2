@@ -1,10 +1,6 @@
 package com.example.jsteam.activity.core;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +19,7 @@ import com.example.jsteam.helper.UserHelper;
 import com.example.jsteam.model.dao.Game;
 import com.example.jsteam.model.dao.Review;
 import com.example.jsteam.model.dao.User;
+import com.example.jsteam.support.ImageLoaderTask;
 
 /**
  * @author kareltan
@@ -63,7 +60,7 @@ public class GamesDetailActivity extends AppCompatActivity {
         TextView gameGenre = findViewById(R.id.tv_genre_name_game_on_game_detail_page);
         TextView gameRating = findViewById(R.id.tv_rating_value_game_on_game_detail_page);
         TextView gamePrice = findViewById(R.id.tv_price_value_game_on_game_detail_page);
-        ImageView gameImage = findViewById(R.id.iv_game_on_review_section);
+        ImageView gameImage = findViewById(R.id.iv_game_on_game_detail_page);
         TextView gameDescription = findViewById(R.id.tv_description_game_on_game_detail_page);
         EditText review = findViewById(R.id.pt_input_review_game_detail);
         Button reviewGameButton = findViewById(R.id.button_add_review_game_detail);
@@ -81,6 +78,8 @@ public class GamesDetailActivity extends AppCompatActivity {
         gameRating.setText(String.valueOf(game.getRating()));
         gamePrice.setText(game.getPrice());
         gameDescription.setText(game.getDescription());
+
+        new ImageLoaderTask(gameImage).execute(game.getImage());
 
         reviewGameButton.setOnClickListener(view -> {
             if(!String.valueOf(review.getText()).isEmpty()){

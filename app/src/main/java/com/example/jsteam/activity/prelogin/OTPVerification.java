@@ -1,4 +1,4 @@
-package com.example.jsteam.activity.core;
+package com.example.jsteam.activity.prelogin;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.jsteam.R;
+import com.example.jsteam.activity.core.HomePageActivity;
 
 public class OTPVerification extends AppCompatActivity {
 

@@ -15,7 +15,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.jsteam.R;
-import com.example.jsteam.activity.core.OTPVerification;
 import com.example.jsteam.helper.UserHelper;
 import com.example.jsteam.model.dao.User;
 
