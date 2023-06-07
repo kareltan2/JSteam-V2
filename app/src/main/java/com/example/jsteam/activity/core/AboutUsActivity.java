@@ -47,5 +47,12 @@ public class AboutUsActivity extends AppCompatActivity {
             intentHome.putExtra("username", getIntent().getStringExtra("username"));
             startActivity(intentHome);
         });
+
+        Button ViewLocation = findViewById(R.id.view_location);
+
+        ViewLocation.setOnClickListener(view -> {
+            Intent intentMaps = new Intent(AboutUsActivity.this, MapsActivity.class);
+            startActivity(intentMaps);
+        });
     }
 }
