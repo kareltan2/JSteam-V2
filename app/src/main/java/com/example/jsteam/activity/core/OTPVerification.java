@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,11 +29,14 @@ public class OTPVerification extends AppCompatActivity {
     private int resendTime = 60;
 
     private int selectETPosition = 0;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         otpEt1 = findViewById(R.id.otpET1);
         otpEt2 = findViewById(R.id.otpET2);
