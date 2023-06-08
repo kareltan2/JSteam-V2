@@ -22,7 +22,7 @@
             android:layout_height="194dp"
             android:layout_margin="8dp"
             android:layout_weight="1.5"
-            android:src="@drawable/among_us_profile_game" />
+            android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:layout_width="match_parent"

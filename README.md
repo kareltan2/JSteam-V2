@@ -3,6 +3,8 @@
 
 Created By:
 Karel Tan - 2301863023
+Jason - 2301877294
+Niclauss Lumoring - 2301881070
 
 Tools:
 - Android Studio

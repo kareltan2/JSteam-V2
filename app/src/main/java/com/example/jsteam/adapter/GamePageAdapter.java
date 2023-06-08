@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.jsteam.R;
 import com.example.jsteam.activity.core.GamesDetailActivity;
 import com.example.jsteam.model.dao.Game;
+import com.example.jsteam.support.ImageLoaderTask;
 
 import java.util.Vector;
 
@@ -45,6 +46,9 @@ public class GamePageAdapter extends RecyclerView.Adapter<GamePageAdapter.ViewHo
         holder.tvGameName.setText(game.getName());
         holder.tvGameGenre.setText(game.getGenre());
         holder.tvGamePrice.setText(game.getPrice());
+
+        new ImageLoaderTask(holder.ivGameImage).execute(game.getImage());
+
         holder.cvGamePageList.setOnClickListener(view -> {
             Intent intent = new Intent(context, GamesDetailActivity.class);
             intent.putExtra("gameId", game.getId());

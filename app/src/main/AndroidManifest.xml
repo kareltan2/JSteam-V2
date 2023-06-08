@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name ="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,12 +21,27 @@
         android:theme="@style/Theme.JSteam"
         tools:targetApi="31">
         <activity
+            android:name=".activity.core.MapsActivity"
+            android:label="JStream Location"
+            android:parentActivityName=".activity.core.AboutUsActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAlT5X01ROZxibxmcjRiVKS7jrAmfGQzxY" />
+
+        <activity
+            android:name=".activity.prelogin.OTPVerification"
+            android:label="JStream OTP Confirmation"
+            android:parentActivityName=".activity.prelogin.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.core.GamesDetailActivity"
             android:exported="false" />
         <activity
             android:name=".activity.core.AboutUsActivity"
             android:exported="false"
-            android:label="Jsteam's Headquarter in Jakarta"/>
+            android:label="Jsteam&apos;s Headquarter in Jakarta" />
         <activity
             android:name=".activity.popup.PopUpConfirmationActivity"
             android:exported="false" />
@@ -50,6 +70,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
