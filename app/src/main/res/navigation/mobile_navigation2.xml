@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_game_page"
-        android:name="com.example.jsteam.ui.game_page_section.GamePageFragment"
+        android:name="com.example.eatadvisory.ui.game_page_section.GamePageFragment"
         android:label="@string/title_game_page"
         tools:layout="@layout/fragment_game_page" />
 
     <fragment
         android:id="@+id/navigation_review_section"
-        android:name="com.example.jsteam.ui.review_section.ReviewSectionFragment"
+        android:name="com.example.eatadvisory.ui.review_section.ReviewSectionFragment"
         android:label="@string/title_review_section"
         tools:layout="@layout/fragment_review_section" />
 
     <fragment
         android:id="@+id/navigation_profile_section"
-        android:name="com.example.jsteam.ui.profile_section.ProfileSectionFragment"
+        android:name="com.example.eatadvisory.ui.profile_section.ProfileSectionFragment"
         android:label="@string/title_profile_section"
         tools:layout="@layout/fragment_profile_section" />
 </navigation>

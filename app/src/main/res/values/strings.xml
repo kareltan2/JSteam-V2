@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JSteam</string>
+    <string name="app_name">EatAdvisory</string>
     <string name="title_activity_home_page">HomePageActivity</string>
     <string name="title_game_page">Game Page</string>
     <string name="title_review_section">Review Section</string>

@@ -41,7 +41,7 @@
         <activity
             android:name=".activity.core.AboutUsActivity"
             android:exported="false"
-            android:label="Jsteam&apos;s Headquarter in Jakarta" />
+            android:label="EatAdvisory&apos;s Headquarter in Jakarta" />
         <activity
             android:name=".activity.popup.PopUpConfirmationActivity"
             android:exported="false" />

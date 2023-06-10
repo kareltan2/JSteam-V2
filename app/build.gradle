@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.jsteam'
+    namespace 'com.example.eatadvisory'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.jsteam"
+        applicationId "com.example.eatadvisory"
         minSdk 33
         targetSdk 33
         versionCode 1
