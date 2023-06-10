@@ -64,7 +64,7 @@ public class InitializeActivity extends AppCompatActivity {
         Random random = new Random();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = "https://mocki.io/v1/6b7306e9-5c3b-4341-8efa-601bbb9b3a94";
+        String url = "https://mocki.io/v1/54b65ff1-7c3d-4b3d-aa77-3c16085991cd";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, response -> {
             try {
                 JSONArray gamesArray = response.getJSONArray("games");
