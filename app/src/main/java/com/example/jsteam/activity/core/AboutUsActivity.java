@@ -42,7 +42,7 @@ public class AboutUsActivity extends AppCompatActivity {
         Button submitReview = findViewById(R.id.button_submit_about_us);
 
         submitReview.setOnClickListener(view -> {
-            Toast.makeText(AboutUsActivity.this, "Thanks for supporting JSteam!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AboutUsActivity.this, "Thanks for supporting EatAdvisory!", Toast.LENGTH_SHORT).show();
             Intent intentHome = new Intent(AboutUsActivity.this, HomePageActivity.class);
             intentHome.putExtra("username", getIntent().getStringExtra("username"));
             startActivity(intentHome);

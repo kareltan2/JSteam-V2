@@ -1,4 +1,4 @@
-# JSteam
+# EatAdvisory
 # Mobile Programming's Project Laboratory 
 
 Created By:
