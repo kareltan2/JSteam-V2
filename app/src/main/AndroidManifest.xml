@@ -22,7 +22,7 @@
         tools:targetApi="31">
         <activity
             android:name=".activity.core.MapsActivity"
-            android:label="JStream Location"
+            android:label="EatAdvisory Location"
             android:parentActivityName=".activity.core.AboutUsActivity"
             android:exported="false" />
 
@@ -32,7 +32,7 @@
 
         <activity
             android:name=".activity.prelogin.OTPVerification"
-            android:label="JStream OTP Confirmation"
+            android:label="EatAdvisory OTP Confirmation"
             android:parentActivityName=".activity.prelogin.MainActivity"
             android:exported="false" />
         <activity
@@ -41,7 +41,7 @@
         <activity
             android:name=".activity.core.AboutUsActivity"
             android:exported="false"
-            android:label="Jsteam&apos;s Headquarter in Jakarta" />
+            android:label="EatAdvisory&apos;s Headquarter in Jakarta" />
         <activity
             android:name=".activity.popup.PopUpConfirmationActivity"
             android:exported="false" />

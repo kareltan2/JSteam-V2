@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="JSteam"
+                android:text="EatAdvisory"
                 android:textColor="@color/dark_green"
                 android:textSize="48sp"
                 android:textStyle="bold" />
@@ -71,7 +71,7 @@
                 android:layout_height="34dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="JSteam’s Headquarter in Jakarta"
+                android:text="EatAdvisory’s Headquarter in Jakarta"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/soft_black"
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
-                android:text="JSteam is a leading digital distribution platform that offers various of video games, entertainment content to millions of users worldwide, discussion about game, also can create game! Founded in 2023, the company's vision to provide a platform which can boost gaming experience. Our Founder: Karel Tan is inspired by his experience about many limitation on gamers to express their emotion and freedom. Therefore, JSteam is now available to become the solution."
+                android:text="The cafe review app is a user-friendly platform for discovering, rating, and reviewing cafes. It offers a seamless browsing experience, allowing users to explore a wide range of cafes based on preferences. With user-generated content and robust features, it's a must-have for coffee enthusiasts and food lovers seeking delightful cafe experiences."
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="View JSteam Location" />
+                android:text="View EatAdvisory Location" />
 
             <RatingBar
                 android:id="@+id/rb_about_us"
