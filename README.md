@@ -1,5 +1,5 @@
 # EatAdvisory
-# Mobile Programming's Project Laboratory 
+# Mobile Programming's Project Lecture 
 
 Created By:
 Karel Tan - 2301863023

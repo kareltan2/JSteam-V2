@@ -10,7 +10,7 @@ public class GamePageModel extends ViewModel {
 
     public GamePageModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Game Page");
+        mText.setValue("Food Page");
     }
 
     public LiveData<String> getText() {

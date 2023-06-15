@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_game_page"
         android:icon="@drawable/game_symbol"
-        android:title="Game Page" />
+        android:title="Food Page" />
 
     <item
         android:id="@+id/navigation_review_section"
