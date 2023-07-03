@@ -18,7 +18,7 @@
             <TextView
                 android:id="@+id/tv_edit_review_popup"
                 android:layout_gravity="center"
-                android:text="Edit your review"
+                android:text="Edit your wish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
@@ -29,7 +29,7 @@
                 android:layout_width="303dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
-                android:hint="Edit review . . ."
+                android:hint="Edit wish . . ."
                 android:inputType="text"
                 android:layout_gravity="center" />
 

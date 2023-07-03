@@ -27,9 +27,9 @@
         android:id="@+id/tv_title_game_on_game_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_gravity="center"
-        android:text="[GAME TITLE]"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="[PLACE TITLE]"
         android:textColor="@color/dark_green"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -114,45 +114,14 @@
         android:textSize="18dp"
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
-    <TextView
-        android:id="@+id/tv_title_review_game_on_game_detail_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="What Do You Think About this Food?"
-        android:textColor="@color/dark_green"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_margin="@dimen/activity_horizontal_margin" />
-
-    <TextView
-        android:id="@+id/tv_review_description_game_on_game_detail_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Give your review here!"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:paddingBottom="@dimen/activity_horizontal_margin" />
-
-    <EditText
-        android:id="@+id/pt_input_review_game_detail"
-        android:layout_width="303dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="0.25dp"
-        android:ems="10"
-        android:hint="Review. . . "
-        android:inputType="text"
-        android:layout_gravity="center" />
-
     <Button
         android:id="@+id/button_add_review_game_detail"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center"
-        android:text="REVIEW" />
+        android:layout_marginTop="5dp"
+        android:text="ADD TO WISHLIST" />
 
     <TextView
         android:layout_width="wrap_content"

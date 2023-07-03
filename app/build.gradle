@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.eatadvisory'
+    namespace 'com.example.traveladvisory'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.eatadvisory"
+        applicationId "com.example.traveladvisory"
         minSdk 33
         targetSdk 33
         versionCode 1

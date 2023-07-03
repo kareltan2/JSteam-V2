@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="EatAdvisory"
+                android:text="TravelAdvisory"
                 android:textColor="@color/dark_green"
                 android:textSize="48sp"
                 android:textStyle="bold" />
@@ -71,7 +71,7 @@
                 android:layout_height="34dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="EatAdvisory’s Headquarter in Jakarta"
+                android:text="TravelAdvisory’s Headquarter in Jakarta"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/soft_black"
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
-                android:text="The cafe review app is a user-friendly platform for discovering, rating, and reviewing cafes. It offers a seamless browsing experience, allowing users to explore a wide range of cafes based on preferences. With user-generated content and robust features, it's a must-have for coffee enthusiasts and food lovers seeking delightful cafe experiences."
+                android:text="Welcome to TravelAdvisory, your go-to platform for discovering Jakarta's top travel destinations. At TravelAdvisory, we are passionate about helping you explore the best of Jakarta by providing curated recommendations and a personalized travel wishlist feature. Whether you're looking for iconic landmarks or hidden gems, our mission is to ensure you have an unforgettable experience in Jakarta. Join us and embark on an extraordinary journey through this vibrant city, creating cherished memories along the way. Happy travels with TravelAdvisory!"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="View EatAdvisory Location" />
+                android:text="View TravelAdvisory Location" />
 
             <RatingBar
                 android:id="@+id/rb_about_us"

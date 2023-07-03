@@ -56,7 +56,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="72dp"
             android:layout_margin="20dp"
             android:orientation="horizontal">
 
@@ -119,6 +119,17 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
+        <Switch
+            android:id="@+id/toggle_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Change App Theme"
+            android:textColor="@color/dark_green"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button_logout_profile_page"

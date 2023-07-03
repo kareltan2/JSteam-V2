@@ -4,12 +4,12 @@
     <item
         android:id="@+id/navigation_game_page"
         android:icon="@drawable/game_symbol"
-        android:title="Food Page" />
+        android:title="Place Page" />
 
     <item
         android:id="@+id/navigation_review_section"
         android:icon="@drawable/review_symbol"
-        android:title="Review Section" />
+        android:title="Wishlist" />
 
     <item
         android:id="@+id/navigation_profile_section"
