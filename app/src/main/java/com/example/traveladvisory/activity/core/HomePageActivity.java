@@ -28,8 +28,6 @@ import java.util.Vector;
 public class HomePageActivity extends AppCompatActivity {
 
     private ActivityHomePageBinding binding;
-    private RecyclerView recyclerViewGamesPageList;
-    private Vector<Place> gamesListVector = new Vector<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -27,7 +27,6 @@ public class ReviewSectionActivity extends AppCompatActivity {
         binding = ActivityReviewSectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view_review_section);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_game_page, R.id.navigation_review_section, R.id.navigation_profile_section)
                 .build();

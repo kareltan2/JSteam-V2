@@ -68,7 +68,6 @@ public class GamesDetailActivity extends AppCompatActivity {
         userHelper.close();
 
         placeHelper.open();
-        //salah disini
         Place place = placeHelper.findPlace(getIntent().getIntExtra("placeId", 1));
         placeHelper.close();
 
@@ -82,12 +81,17 @@ public class GamesDetailActivity extends AppCompatActivity {
 
         reviewGameButton.setOnClickListener(view -> {
             wishHelper.open();
-            wishHelper.insertWish(new Wish(null, user.getId(), place.getId()));
-            wishHelper.close();
-            Toast.makeText(GamesDetailActivity.this, "Wishlist added!", Toast.LENGTH_SHORT).show();
-            Intent intentHome = new Intent(GamesDetailActivity.this, HomePageActivity.class);
-            intentHome.putExtra("username", getIntent().getStringExtra("username"));
-            startActivity(intentHome);
+            if(wishHelper.isExistWish(user.getId(), place.getId())){
+                Toast.makeText(GamesDetailActivity.this, "You have already added this place to wishlist!", Toast.LENGTH_SHORT).show();
+                wishHelper.close();
+            } else{
+                wishHelper.insertWish(new Wish(null, user.getId(), place.getId()));
+                wishHelper.close();
+                Toast.makeText(GamesDetailActivity.this, "Wishlist added!", Toast.LENGTH_SHORT).show();
+                Intent intentHome = new Intent(GamesDetailActivity.this, HomePageActivity.class);
+                intentHome.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(intentHome);
+            }
         });
     }
 }

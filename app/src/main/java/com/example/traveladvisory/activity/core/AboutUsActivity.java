@@ -48,11 +48,10 @@ public class AboutUsActivity extends AppCompatActivity {
             startActivity(intentHome);
         });
 
-        Button ViewLocation = findViewById(R.id.view_location);
+        Button viewLocation = findViewById(R.id.view_location);
 
-        ViewLocation.setOnClickListener(view -> {
-            Intent intentMaps = new Intent(AboutUsActivity.this, MapsActivity.class);
-            startActivity(intentMaps);
-        });
+        viewLocation.setOnClickListener(view ->
+                startActivity(new Intent(AboutUsActivity.this, MapsActivity.class))
+        );
     }
 }

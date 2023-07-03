@@ -68,4 +68,12 @@ public class WishHelper {
         database.execSQL(query);
     }
 
+    public boolean isExistWish(Integer userId, Integer placeId){
+        String query = "SELECT * FROM Wish WHERE user_id = '" + userId + "' AND place_id = '" + placeId + "' ";
+
+        try (Cursor cursor = database.rawQuery(query, null)) {
+            return cursor != null && cursor.getCount() > 0;
+        }
+    }
+
 }

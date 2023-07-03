@@ -13,6 +13,9 @@ import com.example.traveladvisory.R;
 import com.example.traveladvisory.helper.UserHelper;
 import com.example.traveladvisory.model.dao.User;
 
+/**
+ * @author kareltan
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private final UserHelper userHelper = new UserHelper(this);
