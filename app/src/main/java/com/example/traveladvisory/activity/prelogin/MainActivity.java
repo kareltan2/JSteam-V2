@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.traveladvisory.R;
+import com.example.traveladvisory.activity.core.HomePageActivity;
 import com.example.traveladvisory.helper.UserHelper;
 import com.example.traveladvisory.model.dao.User;
 
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                     smsManager.sendMultipartTextMessage(phone, null, parts, null, null);
 
-                    Intent intent = new Intent(MainActivity.this, OTPVerification.class);
+                    Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
                     intent.putExtra("mobile", phone);
                     intent.putExtra("email", email);
                     intent.putExtra("otp", otp);
