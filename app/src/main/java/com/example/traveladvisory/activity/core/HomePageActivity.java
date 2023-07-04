@@ -28,8 +28,6 @@ import java.util.Vector;
 public class HomePageActivity extends AppCompatActivity {
 
     private ActivityHomePageBinding binding;
-    private RecyclerView recyclerViewGamesPageList;
-    private Vector<Place> gamesListVector = new Vector<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_game_page, R.id.navigation_review_section, R.id.navigation_profile_section)
+                R.id.navigation_place_page, R.id.navigation_wish_section, R.id.navigation_profile_section)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_home_page);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

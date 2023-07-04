@@ -21,7 +21,6 @@ import com.example.traveladvisory.model.dao.User;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author kareltan
@@ -38,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        userHelper.open();
-        AtomicInteger index = new AtomicInteger();
         Button loginButton = findViewById(R.id.button_login_login_page);
         TextView notHaveAccountText = findViewById(R.id.tv_didnt_have_account);
         EditText usernameLoginPage = findViewById(R.id.pt_username_login);
@@ -50,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
             String password = String.valueOf(passwordLoginPage.getText());
 
             if(validationNotEmpty(username, password)){
+                userHelper.open();
                 validationAccount(username, password);
+                userHelper.close();
             }
 
         });
@@ -81,31 +80,29 @@ public class MainActivity extends AppCompatActivity {
             else {
                 Toast.makeText(MainActivity.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
                 if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
-                    userHelper.open();
-                    EditText usernameLoginPage = findViewById(R.id.pt_username_login);
-                    User user2 = userHelper.findUser(String.valueOf(usernameLoginPage.getText().toString()));
+                    EditText inputtedUsername = findViewById(R.id.pt_username_login);
+                    User userDB = userHelper.findUser(inputtedUsername.getText().toString());
                     SmsManager smsManager = SmsManager.getDefault();
                     Random random = new Random();
-                    int randomNumber = random.nextInt(10);
-                    int randomNumber2 = random.nextInt(10);
-                    int randomNumber3 = random.nextInt(10);
-                    int randomNumber4 = random.nextInt(10);
-                    String otp = Integer.toString(randomNumber) + Integer.toString(randomNumber2)+Integer.toString(randomNumber3
-                    )+Integer.toString(randomNumber4);
-                    ArrayList<String> parts = smsManager.divideMessage(otp + " is the otp");
-                    String phone = user2.getPhoneNumber();
-                    String email = user2.getEmail();
+                    int OTPFirstNumber = random.nextInt(10);
+                    int OTPSecondNumber = random.nextInt(10);
+                    int OTPThirdNumber = random.nextInt(10);
+                    int OTPFourthNumber = random.nextInt(10);
+                    String OTP = String.format("%d%d%d%d", OTPFirstNumber, OTPSecondNumber, OTPThirdNumber, OTPFourthNumber);
+                    ArrayList<String> parts = smsManager.divideMessage("This is the OTP Code for TravelAdvisory\n" + OTP + "\nDo not share the OTP to anyone!");
+                    String phone = userDB.getPhoneNumber();
+                    String email = userDB.getEmail();
 
                     smsManager.sendMultipartTextMessage(phone, null, parts, null, null);
 
                     Intent intent = new Intent(MainActivity.this, OTPVerification.class);
-                    intent.putExtra("mobile", phone);
+                    intent.putExtra("phoneNumber", phone);
                     intent.putExtra("email", email);
-                    intent.putExtra("otp", otp);
+                    intent.putExtra("otp", OTP);
                     intent.putExtra("username", user.getUsername());
                     startActivity(intent);
-                }else{
-                    Toast.makeText(MainActivity.this, "ke otp else", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please Update Your Personal Setting About Receiving SMS!", Toast.LENGTH_SHORT).show();
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
                 }
                 return true;
@@ -113,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Toast.makeText(MainActivity.this, "Unregistered User! Please register first!", Toast.LENGTH_SHORT).show();
-        userHelper.close();
         return false;
     }
 

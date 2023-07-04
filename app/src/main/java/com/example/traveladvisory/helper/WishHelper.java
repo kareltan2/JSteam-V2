@@ -44,9 +44,9 @@ public class WishHelper {
             do{
                 Integer tempId = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
                 Integer userId = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
-                Integer gameId = cursor.getInt(cursor.getColumnIndexOrThrow("place_id"));
+                Integer placeId = cursor.getInt(cursor.getColumnIndexOrThrow("place_id"));
 
-                wishes.add(new Wish(tempId, userId, gameId));
+                wishes.add(new Wish(tempId, userId, placeId));
 
                 cursor.moveToNext();
             }while(!cursor.isAfterLast());
@@ -66,6 +66,14 @@ public class WishHelper {
     public void deleteWish(Wish wish){
         String query = "DELETE FROM Wish WHERE id = '" + wish.getId() + "'";
         database.execSQL(query);
+    }
+
+    public boolean isExistWish(Integer userId, Integer placeId){
+        String query = "SELECT * FROM Wish WHERE user_id = '" + userId + "' AND place_id = '" + placeId + "' ";
+
+        try (Cursor cursor = database.rawQuery(query, null)) {
+            return cursor != null && cursor.getCount() > 0;
+        }
     }
 
 }

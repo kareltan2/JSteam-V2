@@ -9,12 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.traveladvisory.R;
-import com.example.traveladvisory.activity.core.ReviewSectionActivity;
+import com.example.traveladvisory.activity.core.WishSectionActivity;
 import com.example.traveladvisory.activity.prelogin.MainActivity;
 import com.example.traveladvisory.helper.WishHelper;
 import com.example.traveladvisory.model.dao.Wish;
@@ -37,14 +36,14 @@ public class PopUpConfirmationActivity extends AppCompatActivity {
         Button buttonNo = popupShow.findViewById(R.id.button_no_confirm_popup);
 
         buttonYes.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ReviewSectionActivity.class);
+            Intent intent = new Intent(context, WishSectionActivity.class);
 
             wishHelper = new WishHelper(context);
             wishHelper.open();
             wishHelper.deleteWish(wish);
             wishHelper.close();
             intent.putExtra("username", username);
-
+            popupDismiss(popupWindow);
             context.startActivity(intent);
         });
 
@@ -65,6 +64,7 @@ public class PopUpConfirmationActivity extends AppCompatActivity {
 
         buttonYes.setOnClickListener(v -> {
             Intent intent = new Intent(context, MainActivity.class);
+            popupDismiss(popupWindow);
             context.startActivity(intent);
         });
 

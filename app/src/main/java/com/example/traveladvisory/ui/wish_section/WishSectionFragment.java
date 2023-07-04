@@ -1,4 +1,4 @@
-package com.example.traveladvisory.ui.review_section;
+package com.example.traveladvisory.ui.wish_section;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.traveladvisory.adapter.ReviewSectionAdapter;
-import com.example.traveladvisory.databinding.FragmentReviewSectionBinding;
+import com.example.traveladvisory.adapter.WishSectionAdapter;
+import com.example.traveladvisory.databinding.FragmentWishSectionBinding;
 import com.example.traveladvisory.helper.WishHelper;
 import com.example.traveladvisory.helper.UserHelper;
 
@@ -20,19 +20,19 @@ import java.util.Objects;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
-public class ReviewSectionFragment extends Fragment {
+public class WishSectionFragment extends Fragment {
 
     private WishHelper wishHelper;
 
     private UserHelper userHelper;
 
-    private FragmentReviewSectionBinding binding;
+    private FragmentWishSectionBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        new ViewModelProvider(this).get(ReviewSectionModel.class);
+        new ViewModelProvider(this).get(WishSectionModel.class);
 
-        binding = FragmentReviewSectionBinding.inflate(inflater, container, false);
+        binding = FragmentWishSectionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         wishHelper = new WishHelper(getActivity());
         userHelper = new UserHelper(getActivity());
@@ -47,11 +47,11 @@ public class ReviewSectionFragment extends Fragment {
     }
 
     private void init(){
-        final RecyclerView recyclerViewReviewSectionList = binding.rvReviewSectionList;
+        final RecyclerView recyclerViewWishSectionList = binding.rvWishSectionList;
 
         userHelper.open();
         wishHelper.open();
-        recyclerViewReviewSectionList.setAdapter(new ReviewSectionAdapter(binding.getRoot().getContext(),
+        recyclerViewWishSectionList.setAdapter(new WishSectionAdapter(binding.getRoot().getContext(),
                 wishHelper.findAllWish().stream()
                         .filter(wish ->
                                 wish.getUserId().equals(
@@ -63,7 +63,7 @@ public class ReviewSectionFragment extends Fragment {
         ));
         userHelper.close();
         wishHelper.close();
-        recyclerViewReviewSectionList.setLayoutManager(new LinearLayoutManager(binding.getRoot().getContext()));
+        recyclerViewWishSectionList.setLayoutManager(new LinearLayoutManager(binding.getRoot().getContext()));
         Objects.requireNonNull(getActivity()).getIntent().putExtra("username", getActivity().getIntent().getStringExtra("username"));
     }
 }

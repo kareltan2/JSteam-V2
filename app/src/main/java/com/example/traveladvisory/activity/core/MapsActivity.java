@@ -29,9 +29,13 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+/**
+ * @author kareltan
+ */
 public class MapsActivity extends AppCompatActivity {
 
     SupportMapFragment supportMapFragment;
+
     FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
@@ -65,31 +69,27 @@ public class MapsActivity extends AppCompatActivity {
 
     public void getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (supportMapFragment != null) {
-                    supportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                        @Override
-                        public void onMapReady(@NonNull GoogleMap googleMap) {
-                            LatLng latLng = new LatLng(-6.2075581, 106.7824544);
-                            MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("TravelAdvisory’s Headquarter in Jakarta");
-                            googleMap.addMarker(markerOptions);
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                        }
-                    });
-                }
+        task.addOnSuccessListener(this, location -> {
+            if (location != null) {
+                handleLocationUpdate();
             }
         });
     }
+
+    private void handleLocationUpdate() {
+        if (supportMapFragment != null) {
+            supportMapFragment.getMapAsync(googleMap -> {
+                runOnUiThread(() -> {
+                    LatLng latLng = new LatLng(-6.2075581, 106.7824544);
+                    MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("TravelAdvisory’s Headquarter in Jakarta");
+                    googleMap.addMarker(markerOptions);
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                });
+            });
+        }
+    }
+
 }

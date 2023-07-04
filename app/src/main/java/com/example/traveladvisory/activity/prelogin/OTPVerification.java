@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +20,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.traveladvisory.R;
 import com.example.traveladvisory.activity.core.HomePageActivity;
 
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicReference;
+
+/**
+ * @author kareltan
+ */
 public class OTPVerification extends AppCompatActivity {
 
     private EditText otpEt1, otpEt2, otpEt3, otpEt4;
     private TextView resendBtn;
 
     private boolean resendEnabled = false;
-    private int resendTime = 60;
+    private int resendTime = 20;
 
     private int selectETPosition = 0;
     
@@ -50,7 +57,7 @@ public class OTPVerification extends AppCompatActivity {
         final TextView otpMobile = findViewById(R.id.otpMobile);
 
         final String getEmail = getIntent().getStringExtra("email");
-        final String getMobile = getIntent().getStringExtra("mobile");
+        final String getMobile = getIntent().getStringExtra("phoneNumber");
 
         otpEmail.setText(getEmail);
         otpMobile.setText(getMobile);
@@ -64,30 +71,37 @@ public class OTPVerification extends AppCompatActivity {
 
         startCountDownTimer();
 
-        resendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(resendEnabled){
-                    startCountDownTimer();
-                }
+        AtomicReference<String> otp = new AtomicReference<>(getIntent().getStringExtra("otp"));
+
+        resendBtn.setOnClickListener(view -> {
+            if(resendEnabled){
+                SmsManager smsManager = SmsManager.getDefault();
+                Random random = new Random();
+                int randomNumber = random.nextInt(10);
+                int randomNumber2 = random.nextInt(10);
+                int randomNumber3 = random.nextInt(10);
+                int randomNumber4 = random.nextInt(10);
+                otp.set(String.format("%d%d%d%d", randomNumber, randomNumber2, randomNumber3, randomNumber4));
+                ArrayList<String> parts = smsManager.divideMessage("This is the OTP Code for TravelAdvisory\n" + otp + "\nDo not share the OTP to anyone!");
+                String phone = getIntent().getStringExtra("phoneNumber");
+
+                smsManager.sendMultipartTextMessage(phone, null, parts, null, null);
+                Toast.makeText(OTPVerification.this, "New OTP has been sent", Toast.LENGTH_SHORT).show();
+
+                startCountDownTimer();
             }
         });
 
-        verifyBtn.setOnClickListener(new View.OnClickListener(){
+        verifyBtn.setOnClickListener(view -> {
+            final String inputOtp = otpEt1.getText().toString()+otpEt2.getText().toString()+otpEt3.getText().toString()+otpEt4.getText().toString();
 
-            @Override
-            public void onClick(View view) {
-                final String generateOtp = otpEt1.getText().toString()+otpEt2.getText().toString()+otpEt3.getText().toString()+otpEt4.getText().toString();
-
-
-                if(generateOtp.equals(getIntent().getStringExtra("otp"))){
-                    Intent intent = new Intent(OTPVerification.this, HomePageActivity.class);
-                    intent.putExtra("username", getIntent().getStringExtra("username"));
-                    startActivity(intent);
-                }
-                else{
-                    Toast.makeText(OTPVerification.this, "Wrong OTP", Toast.LENGTH_SHORT).show();
-                }
+            if(inputOtp.equals(otp.toString())){
+                Intent intent = new Intent(OTPVerification.this, HomePageActivity.class);
+                intent.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(OTPVerification.this, "Wrong OTP", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -103,12 +117,11 @@ public class OTPVerification extends AppCompatActivity {
         resendEnabled = false;
         resendBtn.setTextColor(Color.parseColor("#99000000"));
 
-        new CountDownTimer(resendTime * 60, 100){
-
-
+        new CountDownTimer(resendTime * 1000, 1000) {
             @Override
-            public void onTick(long l) {
-                resendBtn.setText("resent Code ("+(l/60)+")");
+            public void onTick(long millisUntilFinished) {
+                int seconds = (int) (millisUntilFinished / 1000);
+                resendBtn.setText("Resend Code (" + seconds + ")");
             }
 
             @Override

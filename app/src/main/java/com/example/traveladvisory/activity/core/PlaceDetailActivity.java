@@ -23,7 +23,7 @@ import com.example.traveladvisory.support.ImageLoaderTask;
 /**
  * @author kareltan
  */
-public class GamesDetailActivity extends AppCompatActivity {
+public class PlaceDetailActivity extends AppCompatActivity {
 
     private final WishHelper wishHelper = new WishHelper(this);
 
@@ -35,7 +35,7 @@ public class GamesDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_games_detail);
+        setContentView(R.layout.activity_place_detail);
 
         init();
     }
@@ -55,39 +55,43 @@ public class GamesDetailActivity extends AppCompatActivity {
     }
 
     private void init() {
-        TextView gameName = findViewById(R.id.tv_title_game_on_game_detail_page);
-        TextView gameGenre = findViewById(R.id.tv_genre_name_game_on_game_detail_page);
-        TextView gameRating = findViewById(R.id.tv_rating_value_game_on_game_detail_page);
-        TextView gamePrice = findViewById(R.id.tv_price_value_game_on_game_detail_page);
-        ImageView gameImage = findViewById(R.id.iv_game_on_game_detail_page);
-        TextView gameDescription = findViewById(R.id.tv_description_game_on_game_detail_page);
-        Button reviewGameButton = findViewById(R.id.button_add_review_game_detail);
+        TextView placeName = findViewById(R.id.tv_title_place_on_place_detail_page);
+        TextView placeGenre = findViewById(R.id.tv_genre_name_place_on_place_detail_page);
+        TextView placeRating = findViewById(R.id.tv_rating_value_place_on_place_detail_page);
+        TextView placePrice = findViewById(R.id.tv_price_value_place_on_place_detail_page);
+        ImageView placeImage = findViewById(R.id.iv_place_on_place_detail_page);
+        TextView placeDescription = findViewById(R.id.tv_description_place_on_place_detail_page);
+        Button wishPlaceButton = findViewById(R.id.button_add_wish_place_detail);
 
         userHelper.open();
         User user = userHelper.findUser(getIntent().getStringExtra("username"));
         userHelper.close();
 
         placeHelper.open();
-        //salah disini
         Place place = placeHelper.findPlace(getIntent().getIntExtra("placeId", 1));
         placeHelper.close();
 
-        gameName.setText(place.getName());
-        gameGenre.setText(place.getGenre());
-        gameRating.setText(String.valueOf(place.getRating()));
-        gamePrice.setText(place.getPrice());
-        gameDescription.setText(place.getDescription());
+        placeName.setText(place.getName());
+        placeGenre.setText(place.getGenre());
+        placeRating.setText(String.valueOf(place.getRating()));
+        placePrice.setText(place.getPrice());
+        placeDescription.setText(place.getDescription());
 
-        new ImageLoaderTask(gameImage).execute(place.getImage());
+        new ImageLoaderTask(placeImage).execute(place.getImage());
 
-        reviewGameButton.setOnClickListener(view -> {
+        wishPlaceButton.setOnClickListener(view -> {
             wishHelper.open();
-            wishHelper.insertWish(new Wish(null, user.getId(), place.getId()));
-            wishHelper.close();
-            Toast.makeText(GamesDetailActivity.this, "Wishlist added!", Toast.LENGTH_SHORT).show();
-            Intent intentHome = new Intent(GamesDetailActivity.this, HomePageActivity.class);
-            intentHome.putExtra("username", getIntent().getStringExtra("username"));
-            startActivity(intentHome);
+            if(wishHelper.isExistWish(user.getId(), place.getId())){
+                Toast.makeText(PlaceDetailActivity.this, "You have already added this place to wishlist!", Toast.LENGTH_SHORT).show();
+                wishHelper.close();
+            } else {
+                wishHelper.insertWish(new Wish(null, user.getId(), place.getId()));
+                wishHelper.close();
+                Toast.makeText(PlaceDetailActivity.this, "Wishlist added!", Toast.LENGTH_SHORT).show();
+                Intent intentHome = new Intent(PlaceDetailActivity.this, HomePageActivity.class);
+                intentHome.putExtra("username", getIntent().getStringExtra("username"));
+                startActivity(intentHome);
+            }
         });
     }
 }

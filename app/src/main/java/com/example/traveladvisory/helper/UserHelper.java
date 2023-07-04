@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import com.example.traveladvisory.model.dao.User;
 
@@ -48,11 +49,11 @@ public class UserHelper {
 
             return new User(id, usernameDatabase, password, email, region, phoneNumber);
         } else {
+            Log.d("findUser", "No user found!");
             cursor.close();
-            return null; // or handle the case when user is not found
+            return null;
         }
-    }
-
+     }
 
     public User findUserByUserId(Integer userId){
         String query = "SELECT * FROM User WHERE id = '" + userId + "'";

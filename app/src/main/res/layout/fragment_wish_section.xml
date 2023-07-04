@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".activity.core.ReviewSectionActivity">
+    tools:context=".activity.core.WishSectionActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_review_section_list"
+        android:id="@+id/rv_wish_section_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
-        android:id="@+id/tv_review_section"
+        android:id="@+id/tv_wish_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

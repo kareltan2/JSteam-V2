@@ -1,16 +1,16 @@
-package com.example.traveladvisory.ui.review_section;
+package com.example.traveladvisory.ui.place_page_section;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ReviewSectionModel extends ViewModel {
+public class PlacePageModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public ReviewSectionModel() {
+    public PlacePageModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Wishlist Section");
+        mText.setValue("Place Page");
     }
 
     public LiveData<String> getText() {

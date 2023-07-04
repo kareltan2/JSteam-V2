@@ -39,7 +39,7 @@ public class Wish {
         return placeId;
     }
 
-    public void setPlaceId(Integer gameId) {
-        this.placeId = gameId;
+    public void setPlaceId(Integer placeId) {
+        this.placeId = placeId;
     }
 }

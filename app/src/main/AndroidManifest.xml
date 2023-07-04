@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:enableOnBackInvokedCallback="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -36,7 +37,7 @@
             android:parentActivityName=".activity.prelogin.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.core.GamesDetailActivity"
+            android:name=".activity.core.PlaceDetailActivity"
             android:exported="false" />
         <activity
             android:name=".activity.core.AboutUsActivity"
@@ -48,11 +49,12 @@
         <activity
             android:name=".activity.core.ProfilePageActivity"
             android:exported="false"
+            android:theme="@style/Theme.JSteam"
             android:label="@string/title_profile_section" />
         <activity
-            android:name=".activity.core.ReviewSectionActivity"
+            android:name=".activity.core.WishSectionActivity"
             android:exported="false"
-            android:label="@string/title_review_section" />
+            android:label="@string/title_wish_section" />
         <activity
             android:name=".activity.core.HomePageActivity"
             android:exported="false"

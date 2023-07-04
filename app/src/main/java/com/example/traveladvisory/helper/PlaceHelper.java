@@ -60,19 +60,19 @@ public class PlaceHelper {
     }
 
     public void insertPlace(Place place){
-        String queryInsertGame = "INSERT INTO Place VALUES (?, ?, ?, ?, ?, ?, ?)";
-        SQLiteStatement statementGame = database.compileStatement(queryInsertGame);
-        statementGame.bindString(2, place.getName());
-        statementGame.bindString(3, place.getGenre());
-        statementGame.bindDouble(4, place.getRating());
-        statementGame.bindString(5, place.getPrice());
-        statementGame.bindString(6, place.getImage());
-        statementGame.bindString(7, place.getDescription());
-        statementGame.executeInsert();
+        String queryInsertPlace = "INSERT INTO Place VALUES (?, ?, ?, ?, ?, ?, ?)";
+        SQLiteStatement statementPlace = database.compileStatement(queryInsertPlace);
+        statementPlace.bindString(2, place.getName());
+        statementPlace.bindString(3, place.getGenre());
+        statementPlace.bindDouble(4, place.getRating());
+        statementPlace.bindString(5, place.getPrice());
+        statementPlace.bindString(6, place.getImage());
+        statementPlace.bindString(7, place.getDescription());
+        statementPlace.executeInsert();
     }
 
-    public Place findPlace(int gameId){
-        String query = "SELECT * FROM Place WHERE id = '" + gameId + "'";
+    public Place findPlace(int placeId){
+        String query = "SELECT * FROM Place WHERE id = '" + placeId + "'";
         Cursor cursor = database.rawQuery(query, null);
         cursor.moveToFirst();
 

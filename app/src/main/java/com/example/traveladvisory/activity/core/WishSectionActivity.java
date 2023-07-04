@@ -14,26 +14,24 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.traveladvisory.R;
-import com.example.traveladvisory.databinding.ActivityReviewSectionBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.traveladvisory.databinding.ActivityWishSectionBinding;
 
-public class ReviewSectionActivity extends AppCompatActivity {
-    private ActivityReviewSectionBinding binding;
+public class WishSectionActivity extends AppCompatActivity {
+    private ActivityWishSectionBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityReviewSectionBinding.inflate(getLayoutInflater());
+        binding = ActivityWishSectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view_review_section);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_game_page, R.id.navigation_review_section, R.id.navigation_profile_section)
+                R.id.navigation_place_page, R.id.navigation_wish_section, R.id.navigation_profile_section)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_review_section);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_wish_section);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navViewReviewSection, navController);
+        NavigationUI.setupWithNavController(binding.navViewWishSection, navController);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class ReviewSectionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId() == R.id.about_us_button){
-            Intent intent = new Intent(ReviewSectionActivity.this, AboutUsActivity.class);
+            Intent intent = new Intent(WishSectionActivity.this, AboutUsActivity.class);
             intent.putExtra("username", getIntent().getStringExtra("username"));
             startActivity(intent);
             return true;
