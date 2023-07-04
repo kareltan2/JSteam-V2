@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_edit_review_popup"
+                android:id="@+id/tv_edit_wish_popup"
                 android:layout_gravity="center"
                 android:text="Edit your wish"
                 android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/pt_edit_review_pop_up"
+                android:id="@+id/pt_edit_wish_pop_up"
                 android:layout_width="303dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
@@ -34,7 +34,7 @@
                 android:layout_gravity="center" />
 
             <Button
-                android:id="@+id/button_edit_review_popup"
+                android:id="@+id/button_edit_wish_popup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="edit" />

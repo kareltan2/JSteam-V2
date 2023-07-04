@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.core.GamesDetailActivity"
+    tools:context=".activity.core.PlaceDetailActivity"
     android:orientation="vertical"
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/iv_game_on_game_detail_page"
+        android:id="@+id/iv_place_on_place_detail_page"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -24,7 +24,7 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/tv_title_game_on_game_detail_page"
+        android:id="@+id/tv_title_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -35,7 +35,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_description_game_on_game_detail_page"
+        android:id="@+id/tv_description_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -51,7 +51,7 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/tv_title_genre_game_on_game_detail_page"
+        android:id="@+id/tv_title_genre_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -62,7 +62,7 @@
         android:layout_margin="@dimen/activity_horizontal_margin" />
 
     <TextView
-        android:id="@+id/tv_genre_name_game_on_game_detail_page"
+        android:id="@+id/tv_genre_name_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -72,7 +72,7 @@
         android:textSize="18dp" />
 
     <TextView
-        android:id="@+id/tv_title_rating_game_on_game_detail_page"
+        android:id="@+id/tv_title_rating_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -84,7 +84,7 @@
         />
 
     <TextView
-        android:id="@+id/tv_rating_value_game_on_game_detail_page"
+        android:id="@+id/tv_rating_value_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -94,7 +94,7 @@
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
     <TextView
-        android:id="@+id/tv_title_price_game_on_game_detail_page"
+        android:id="@+id/tv_title_price_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -105,7 +105,7 @@
         android:layout_margin="@dimen/activity_horizontal_margin" />
 
     <TextView
-        android:id="@+id/tv_price_value_game_on_game_detail_page"
+        android:id="@+id/tv_price_value_place_on_place_detail_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -115,7 +115,7 @@
         android:paddingBottom="@dimen/activity_horizontal_margin" />
 
     <Button
-        android:id="@+id/button_add_review_game_detail"
+        android:id="@+id/button_add_wish_place_detail"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

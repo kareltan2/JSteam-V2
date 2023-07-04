@@ -10,11 +10,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.appcompat.app.AppCompatDelegate;
 
-import com.example.traveladvisory.R;
 import com.example.traveladvisory.activity.popup.PopUpConfirmationActivity;
 import com.example.traveladvisory.databinding.FragmentProfileSectionBinding;
 import com.example.traveladvisory.helper.UserHelper;

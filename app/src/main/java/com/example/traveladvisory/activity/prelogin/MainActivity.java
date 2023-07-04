@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        userHelper.open();
         Button loginButton = findViewById(R.id.button_login_login_page);
         TextView notHaveAccountText = findViewById(R.id.tv_didnt_have_account);
         EditText usernameLoginPage = findViewById(R.id.pt_username_login);

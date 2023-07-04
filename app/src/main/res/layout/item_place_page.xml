@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cv_game_page_list"
+    android:id="@+id/cv_place_page_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
@@ -17,7 +17,7 @@
         android:gravity="center">
 
         <ImageView
-            android:id="@+id/iv_game_on_game_page"
+            android:id="@+id/iv_place_on_place_page"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -33,7 +33,7 @@
             android:padding="7dp">
 
             <TextView
-                android:id="@+id/tv_title_game_on_game_page"
+                android:id="@+id/tv_title_place_on_place_page"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="[TITLE]"
@@ -42,13 +42,13 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_genre_game_on_game_page"
+                android:id="@+id/tv_genre_place_on_place_page"
                 android:layout_width="217dp"
                 android:layout_height="wrap_content"
                 android:text="[GENRE]" />
 
             <TextView
-                android:id="@+id/tv_price_game_on_game_page"
+                android:id="@+id/tv_price_place_on_place_page"
                 android:layout_width="217dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"

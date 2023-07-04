@@ -44,9 +44,9 @@ public class WishHelper {
             do{
                 Integer tempId = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
                 Integer userId = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
-                Integer gameId = cursor.getInt(cursor.getColumnIndexOrThrow("place_id"));
+                Integer placeId = cursor.getInt(cursor.getColumnIndexOrThrow("place_id"));
 
-                wishes.add(new Wish(tempId, userId, gameId));
+                wishes.add(new Wish(tempId, userId, placeId));
 
                 cursor.moveToNext();
             }while(!cursor.isAfterLast());

@@ -72,15 +72,24 @@ public class MapsActivity extends AppCompatActivity {
             return;
         }
         Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(location -> {
-            if (supportMapFragment != null) {
-                supportMapFragment.getMapAsync(googleMap -> {
+        task.addOnSuccessListener(this, location -> {
+            if (location != null) {
+                handleLocationUpdate();
+            }
+        });
+    }
+
+    private void handleLocationUpdate() {
+        if (supportMapFragment != null) {
+            supportMapFragment.getMapAsync(googleMap -> {
+                runOnUiThread(() -> {
                     LatLng latLng = new LatLng(-6.2075581, 106.7824544);
                     MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("TravelAdvisory’s Headquarter in Jakarta");
                     googleMap.addMarker(markerOptions);
                     googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 });
-            }
-        });
+            });
+        }
     }
+
 }

@@ -53,10 +53,11 @@ public class InitializeActivity extends AppCompatActivity {
         String url = "https://mocki.io/v1/967bccbf-14b7-4849-bbaf-bbd4f1a6765b";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, response -> {
             try {
-                JSONArray gamesArray = response.getJSONArray("places");
+                JSONArray placeArray = response.getJSONArray("places");
 
-                for (int i = 1; i <= gamesArray.length(); i++) {
-                    JSONObject jsonObject = gamesArray.getJSONObject(i-1);
+                placeHelper.open();
+                for (int i = 1; i <= placeArray.length(); i++) {
+                    JSONObject jsonObject = placeArray.getJSONObject(i-1);
                     String name = jsonObject.getString("name");
                     String genre = jsonObject.getString("genre");
                     Double rating = jsonObject.getDouble("rating");
@@ -64,10 +65,9 @@ public class InitializeActivity extends AppCompatActivity {
                     String image = jsonObject.getString("image");
                     String description = jsonObject.getString("description");
 
-                    placeHelper.open();
                     placeHelper.insertPlace(new Place(null, name, genre, rating, price, image, description));
-                    placeHelper.close();
                 }
+                placeHelper.close();
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);

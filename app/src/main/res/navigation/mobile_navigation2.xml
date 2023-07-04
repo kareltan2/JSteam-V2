@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/navigation_game_page">
+    app:startDestination="@+id/navigation_place_page">
 
     <fragment
-        android:id="@+id/navigation_game_page"
-        android:name="com.example.traveladvisory.ui.game_page_section.GamePageFragment"
-        android:label="@string/title_game_page"
-        tools:layout="@layout/fragment_game_page" />
+        android:id="@+id/navigation_place_page"
+        android:name="com.example.traveladvisory.ui.place_page_section.PlacePageFragment"
+        android:label="@string/title_place_page"
+        tools:layout="@layout/fragment_place_page" />
 
     <fragment
-        android:id="@+id/navigation_review_section"
-        android:name="com.example.traveladvisory.ui.review_section.ReviewSectionFragment"
-        android:label="@string/title_review_section"
-        tools:layout="@layout/fragment_review_section" />
+        android:id="@+id/navigation_wish_section"
+        android:name="com.example.traveladvisory.ui.wish_section.WishSectionFragment"
+        android:label="@string/title_wish_section"
+        tools:layout="@layout/fragment_wish_section" />
 
     <fragment
         android:id="@+id/navigation_profile_section"

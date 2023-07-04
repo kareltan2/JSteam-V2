@@ -39,9 +39,9 @@ public class AboutUsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Button submitReview = findViewById(R.id.button_submit_about_us);
+        Button submitWish = findViewById(R.id.button_submit_about_us);
 
-        submitReview.setOnClickListener(view -> {
+        submitWish.setOnClickListener(view -> {
             Toast.makeText(AboutUsActivity.this, "Thanks for supporting TravelAdvisory!", Toast.LENGTH_SHORT).show();
             Intent intentHome = new Intent(AboutUsActivity.this, HomePageActivity.class);
             intentHome.putExtra("username", getIntent().getStringExtra("username"));

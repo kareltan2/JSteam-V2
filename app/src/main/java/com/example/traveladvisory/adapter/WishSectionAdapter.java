@@ -25,13 +25,13 @@ import java.util.Vector;
 /**
  * @author kareltan
  */
-public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdapter.ViewHolder> {
+public class WishSectionAdapter extends RecyclerView.Adapter<WishSectionAdapter.ViewHolder> {
 
     private Context context;
 
     private Vector<Wish> wishes;
 
-    public ReviewSectionAdapter(Context context, Vector<Wish> wishes) {
+    public WishSectionAdapter(Context context, Vector<Wish> wishes) {
         this.wishes = wishes;
         this.context = context;
     }
@@ -39,7 +39,7 @@ public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_review_section, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_wish_section, parent, false);
         return new ViewHolder(view);
     }
 
@@ -56,12 +56,12 @@ public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdap
         userHelper.close();
         placeHelper.close();
 
-        holder.tvGameName.setText(place.getName());
+        holder.tvPlaceName.setText(place.getName());
         holder.tvUsername.setText(username);
 
-        new ImageLoaderTask(holder.ivGameImage).execute(place.getImage());
+        new ImageLoaderTask(holder.ivPlaceImage).execute(place.getImage());
 
-        holder.buttonDeleteReview.setOnClickListener(view -> {
+        holder.buttonDeleteWish.setOnClickListener(view -> {
             PopUpConfirmationActivity popUpConfirmation = new PopUpConfirmationActivity();
             popUpConfirmation.popUpConfirmation(view, context, wish, username);
         });
@@ -73,18 +73,18 @@ public class ReviewSectionAdapter extends RecyclerView.Adapter<ReviewSectionAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        protected CardView cvReviewSectionList;
-        protected TextView tvGameName, tvUsername;
-        protected ImageView ivGameImage;
-        protected Button buttonDeleteReview;
+        protected CardView cvWishSectionList;
+        protected TextView tvPlaceName, tvUsername;
+        protected ImageView ivPlaceImage;
+        protected Button buttonDeleteWish;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cvReviewSectionList = itemView.findViewById(R.id.cv_review_section_list);
-            tvGameName = itemView.findViewById(R.id.tv_title_game_on_review_section);
-            tvUsername = itemView.findViewById(R.id.tv_username_reviewer_on_review_section);
-            ivGameImage = itemView.findViewById(R.id.iv_game_on_review_section);
-            buttonDeleteReview = itemView.findViewById(R.id.button_delete_review_review_section);
+            cvWishSectionList = itemView.findViewById(R.id.cv_wish_section_list);
+            tvPlaceName = itemView.findViewById(R.id.tv_title_place_on_wish_section);
+            tvUsername = itemView.findViewById(R.id.tv_username_wisher_on_wish_section);
+            ivPlaceImage = itemView.findViewById(R.id.iv_place_on_wish_section);
+            buttonDeleteWish = itemView.findViewById(R.id.button_delete_wish_wish_section);
         }
     }
 }

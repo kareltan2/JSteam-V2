@@ -37,7 +37,7 @@
             android:parentActivityName=".activity.prelogin.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.core.GamesDetailActivity"
+            android:name=".activity.core.PlaceDetailActivity"
             android:exported="false" />
         <activity
             android:name=".activity.core.AboutUsActivity"
@@ -52,9 +52,9 @@
             android:theme="@style/Theme.JSteam"
             android:label="@string/title_profile_section" />
         <activity
-            android:name=".activity.core.ReviewSectionActivity"
+            android:name=".activity.core.WishSectionActivity"
             android:exported="false"
-            android:label="@string/title_review_section" />
+            android:label="@string/title_wish_section" />
         <activity
             android:name=".activity.core.HomePageActivity"
             android:exported="false"
